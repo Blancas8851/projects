@@ -1,0 +1,16 @@
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\EmployeeManagement.exe
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\EmployeeManagement.deps.json
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\EmployeeManagement.runtimeconfig.json
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\EmployeeManagement.runtimeconfig.dev.json
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\EmployeeManagement.dll
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\ref\EmployeeManagement.dll
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\bin\Debug\net5.0\EmployeeManagement.pdb
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.csproj.AssemblyReference.cache
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.AssemblyInfoInputs.cache
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.AssemblyInfo.cs
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.csproj.CoreCompileInputs.cache
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.dll
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\ref\EmployeeManagement.dll
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.pdb
+C:\Users\super\Desktop\Projects\class_project\EmployeeManagement\obj\Debug\net5.0\EmployeeManagement.genruntimeconfig.cache
