@@ -1,15 +1,32 @@
 ﻿using System;
-
-namespace oops_task
+using SQL_CODE;
+namespace Hospital
 {
     class Program
     {
+
+        private static bool IsServerConnected(string connectionString)
+{
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        try
+        {
+            connection.Open();
+            return true;
+        }
+        catch (SqlException)
+        {
+            return false;
+        }
+    }
+}
         static void Main(string[] args)
         {
            
-             Console.WriteLine("~~~~~~~~~~~~~~~~~~Welcome to the Bank~~~~~~~~~~~~~~~~~~~~");
-             
+             Console.WriteLine("~~~~~~~~~~~~~~~~~~Welcome to Hospital Records~~~~~~~~~~~~~~~~~~~~");
+             SQL con = new SQL();
                 acct user1 = new acct()
+
                 {
 
                 accbal = 3000,
