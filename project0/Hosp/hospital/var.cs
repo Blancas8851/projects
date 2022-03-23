@@ -15,35 +15,55 @@ namespace var{
 
 
         //for table two users
-        public int u_id {get; set;}
+        public int users_id {get; set;}
         public string user_N { get; set; } 
-        public string user_LN { get; set; } 
-        public bool is_Admin;
+        public string user_pass { get; set; } 
+        public bool is_admin;
 
-        // for passwords table
-        public int u_id2 {get; set;}
-        public string pass_word { get; set; } 
+        
 
         // gen vars
         public bool cont;
+       public string username;
+       public string Pass;
 
 
-     public  bool test_char(char i){
+     public   bool test_char(char i){
                         
-                        
-                        
-                        if (i.Equals('y')== true || i.Equals('Y')==true)
-                        {cont = true;}
-                                else if(i.Equals('n')==true|| i.Equals('N')==true)
-                                {cont=false;}
-                        
-                        
-                
+                    bool a = true;
+                        while (a)
+                        {
+
 
                         
-                        return(cont);
+                            if (i.Equals('y')== true || i.Equals('Y')==true)
+                            {cont = true;
+                            a = false;
+                            }
+
+                                    else if(i.Equals('n')==true|| i.Equals('N')==true)
+                                    
+                                    {
+                                        cont=false;
+                                        a = false;
+                                        Console.Clear();
+                                        System.Console.ForegroundColor= ConsoleColor.DarkYellow;
+                                        
+                                        System.Console.ForegroundColor= ConsoleColor.White;;
+                                    }
+                             else
+                             {
+                                 System.Console.ForegroundColor= ConsoleColor.Yellow;
+                                 System.Console.WriteLine("Not a valid input, please try again");
+                                 System.Console.WriteLine("continue? Y/N");
+                                 System.Console.ForegroundColor= ConsoleColor.White;
+                                    i = Convert.ToChar (Console.ReadLine());
+                                 //a = true;
+                             }
+                             
                         }
-
+                        return(cont);
+     }
 
     }   
 
