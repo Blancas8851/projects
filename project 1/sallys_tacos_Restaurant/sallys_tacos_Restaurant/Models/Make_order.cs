@@ -46,7 +46,7 @@ namespace sallys_tacos_Restaurant.Models
         }
         public string delete_order(int ID )
         {
-         SqlCommand cmd_del_order = new SqlCommand("delete from orders where product_Id = @id", con);
+         SqlCommand cmd_del_order = new SqlCommand("delete from orders where order_id = @id", con);
             cmd_del_order.Parameters.AddWithValue("@id", ID);
             
             try

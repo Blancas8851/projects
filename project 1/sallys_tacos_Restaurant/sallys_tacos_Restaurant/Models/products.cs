@@ -56,13 +56,13 @@ namespace sallys_tacos_Restaurant.Models
         }
         
     
-        public string add_Prod(products_Model newProd)
+        public string add_Prod(string Product_Name, string prod_desc, int prod_qty, double prod_price)
         {
             SqlCommand cmd_addProduct = new SqlCommand("insert into productTable values( @P_name, @product_desc, @P_qty, @P_Cost)", con);
-            cmd_addProduct.Parameters.AddWithValue("@P_name", newProd.p_name);
-            cmd_addProduct.Parameters.AddWithValue("@product_desc", newProd.prod_desc);
-            cmd_addProduct.Parameters.AddWithValue("@P_qty", newProd.prod_qty);
-            cmd_addProduct.Parameters.AddWithValue("@P_Cost", newProd.prod_price);
+            cmd_addProduct.Parameters.AddWithValue("@P_name", Product_Name);
+            cmd_addProduct.Parameters.AddWithValue("@product_desc", prod_desc);
+            cmd_addProduct.Parameters.AddWithValue("@P_qty", prod_qty);
+            cmd_addProduct.Parameters.AddWithValue("@P_Cost", prod_price);
             try
             {
                 con.Open();
@@ -80,7 +80,38 @@ namespace sallys_tacos_Restaurant.Models
             }
             return "product added successfully";
         }
-    
+
+        #region update
+        public string UpdateProduct(int prod_id, string prod_name, string prod_desc, int qty, double prod_price)
+        {
+            SqlCommand cmd_Prod_update = new SqlCommand("update productTable set P_name = @prodname, product_desc = @prod_desc, P_qty = @qty, P_cost = @price where product_Id = @id ", con);
+            cmd_Prod_update.Parameters.AddWithValue("@id", prod_id);
+            cmd_Prod_update.Parameters.AddWithValue("@prodname", prod_name);
+            cmd_Prod_update.Parameters.AddWithValue("@prod_desc", prod_desc);
+            cmd_Prod_update.Parameters.AddWithValue("@qty", qty);
+            cmd_Prod_update.Parameters.AddWithValue("@price", prod_price);
+
+
+
+            try
+            {
+                con.Open();
+                cmd_Prod_update.ExecuteNonQuery();
+            }
+            catch (Exception es)
+            {
+                throw new Exception(es.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return "product updated succesfully";
+        }
+        #endregion
+
+
+        #region delete product
         public string DeleteProd(int PID)
         {
             SqlCommand cmd_delete = new SqlCommand("delete from productTable where product_Id = @PID", con);
@@ -101,12 +132,12 @@ namespace sallys_tacos_Restaurant.Models
             return "Product has been poofed";
 
         }
-    
-    
-    
-    
-    
-    
-    
+        #endregion
+
+
+
+
+
+
     }
 }

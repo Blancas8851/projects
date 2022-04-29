@@ -62,17 +62,62 @@ namespace sallys_tacos_Restaurant.Models
             return clist;
         }
         #endregion
+        #region search by customer
+      
+        public List<Customer_Details_Model> GetCustomers_by(int id)
+        {
+            SqlCommand cmd_aCust = new SqlCommand("select * from customerTable where cust_ID = @id", con);
+            cmd_aCust.Parameters.AddWithValue("@id", id);
+            List<Customer_Details_Model> clist = new List<Customer_Details_Model>();
+            SqlDataReader readACust = null;
+            try
+            {
+                con.Open();
+                readACust = cmd_aCust.ExecuteReader();
 
-        #region add
-        public string add_Cust(Customer_Details_Model newCust)
+                while (readACust.Read())
+                {
+                    clist.Add(new Customer_Details_Model()
+                    {
+                        cust_id = Convert.ToInt32(readACust[0]),
+                        f_name = readACust[1].ToString(),
+                        l_lastname = readACust[2].ToString(),
+                        address = readACust[3].ToString(),
+                        state = readACust[4].ToString(),
+                        country = readACust[5].ToString(),
+                        city = readACust[6].ToString()
+
+                    });
+
+
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                readACust.Close();
+                con.Close();
+            }
+            return clist;
+        }
+
+            #endregion
+
+            #region add
+            public string add_Cust(string f_name,string l_lastname,string address,string state,string city,string country)
         {
             SqlCommand cmd_addCustomer = new SqlCommand("insert into customerTable values( @name, @lastname, @address, @state, @city, @country)", con);
-            cmd_addCustomer.Parameters.AddWithValue("@name", newCust.f_name);
-            cmd_addCustomer.Parameters.AddWithValue("@lastname", newCust.l_lastname);
-            cmd_addCustomer.Parameters.AddWithValue("@address", newCust.address);
-            cmd_addCustomer.Parameters.AddWithValue("@state", newCust.state);
-            cmd_addCustomer.Parameters.AddWithValue("@city", newCust.city);
-            cmd_addCustomer.Parameters.AddWithValue("@country", newCust.country);
+            cmd_addCustomer.Parameters.AddWithValue("@name", f_name);
+            cmd_addCustomer.Parameters.AddWithValue("@lastname", l_lastname);
+            cmd_addCustomer.Parameters.AddWithValue("@address", address);
+            cmd_addCustomer.Parameters.AddWithValue("@state", state);
+            cmd_addCustomer.Parameters.AddWithValue("@city", city);
+            cmd_addCustomer.Parameters.AddWithValue("@country", country);
 
 
             try
@@ -92,6 +137,8 @@ namespace sallys_tacos_Restaurant.Models
         }
 
         #endregion
+
+        #region delete customer
         public string DeleteCust(int CID)
         {
 
@@ -112,9 +159,9 @@ namespace sallys_tacos_Restaurant.Models
             }
             return "Customer Deleted Successfully";
         }
-
+        #endregion
         #region Update
-        public string UpdateCustomer(Customer_Details_Model update)
+        public string UpdateCustomer(int cust_id,string f_name,string l_lastname,string address,string city, string state, string country)
         {
             SqlCommand cmd_Cust_update = new SqlCommand("update customerTable set f_name = @fname, l_name = @lname, address = @add, state = @state,country = @country, city= @city where cust_ID = @CID ", con);
             cmd_Cust_update.Parameters.AddWithValue("@fname", f_name);

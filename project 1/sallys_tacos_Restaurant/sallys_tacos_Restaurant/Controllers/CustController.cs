@@ -31,14 +31,22 @@ namespace sallys_tacos_Restaurant.Controllers
             return Ok(Models.GetCustomers());
         }
 
+
+        [HttpGet]
+        [Route("Search Customer")]
+        public IActionResult Cust_search(int id)
+        {
+            return Ok(Models.GetCustomers_by(id));  
+        }
+
        
         [HttpPost]
         [Route("addCust")]
-        public IActionResult add_cust(Customer_Details_Model add_cust)
+        public IActionResult add_cust( string f_name, string l_lastname, string address, string state, string city, string country)
         {
             try
             {
-                return Created("", Models.add_Cust(add_cust));
+                return Created("", Models.add_Cust(f_name,l_lastname,address, state,city,country));
             }
             catch(System.Exception es)
             {
@@ -47,7 +55,7 @@ namespace sallys_tacos_Restaurant.Controllers
         }
 
         [HttpDelete]
-        [Route("deleteProduct")]
+        [Route("deleteCustomer")]
         public IActionResult Cust_delete(int ID)
         {
             try
@@ -62,11 +70,11 @@ namespace sallys_tacos_Restaurant.Controllers
         
         [HttpPut]
         [Route("UpdateCustomer")]
-        public IActionResult UpdateCustomer(Customer_Details_Model update)
+        public IActionResult UpdateCustomer(int cust_id, string f_name, string l_lastname, string address, string city, string state, string country)
         {
             try
             {
-                return Accepted(Models.UpdateCustomer(update));
+                return Accepted(Models.UpdateCustomer(cust_id,f_name,l_lastname,address,city,state,country));
             }
             catch(Exception es)
             {

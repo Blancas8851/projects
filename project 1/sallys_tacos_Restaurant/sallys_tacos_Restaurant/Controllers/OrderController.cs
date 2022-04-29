@@ -18,21 +18,29 @@ namespace sallys_tacos_Restaurant.Controllers
             _logger = logger;
         }
 
-        orders_model model = new orders_model();
+        Orders_model model = new Orders_model();
         makeOrders_model make = new makeOrders_model();
+       
+
+
+
         [HttpGet]
-        [Route("Orders")]
+        [Route("AllOrders")]
         public IActionResult allOrders()
         {
             return Ok(model.AllOrders());
         }
 
+        [HttpGet]
+        [Route("SomeOrders")]
+
+        public IActionResult someorders(int customer_ID)
+        {
+            return Ok(model.custOrders(customer_ID));
+        }
+
         [HttpPost]
-        /// <summary>
-        /// get name
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+
         [Route("makeOrder")]
         public IActionResult Make_Order(int c_id,int prod_id,string date, int prod_QTY)
         {
